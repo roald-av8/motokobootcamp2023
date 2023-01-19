@@ -92,7 +92,7 @@ actor {
     Debug.print("Q1 pass");
 
     //2
-    let q2 = await count_character(Motoko, o);
+    let q2 = await count_character("Motoko", 'o');
     assert (q2 == 3);
     Debug.print("Q2 pass");
 
