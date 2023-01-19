@@ -1,7 +1,11 @@
+import Int "mo:base/Int";
+import Nat "mo:base/Nat";
 import Debug "mo:base/Debug";
 import Array "mo:base/Array";
-import Text "mo:base/Text";
 import Iter "mo:base/Iter";
+import Text "mo:base/Text";
+import Nat64 "mo:base/Nat64";
+import Buffer "mo:base/Buffer";
 
 //dfx deploy: dfx canister call challenges test
 
@@ -22,14 +26,11 @@ actor {
     };
 
     //2
-    //count_character(t : Text, c : Char) -> async Nat
+   public func count_character(t : Text, c : Char) : async Nat {
+        Iter.size(Iter.filter(t.chars(), func (c1 : Char) : Bool { c == c1 }));
+    };
 
-   // public func count_character(t : Text, c : Char) : async Nat {
-     //   Iter.size(Iter.filter(t.chars(), func (c2 : Char) : Bool { c == c2 }));
-      
-   // };
-
-    //3
+    //3   
     public func factorial(n : Nat) : async Nat {
 
         func fact(m : Nat) : Nat {
@@ -48,13 +49,51 @@ actor {
         Iter.size(Iter.filter( t.chars(),func (c : Char) : Bool { c == ' '})); // single quotes for Char
     };
     
+    //5 find_duplicates(a : [Nat]) -> async [Nat] { Iter.filter( a.chars(),func (c : Nat) : Bool { c == ' '})
+    /*duplicates : 
+    public func find_duplicates(a : [Nat]) async [Nat] {
+        Iter.filter( a.chars(), func (c: Nat) : Bool {c =})
+    };
+    if c = Iter.filter(a) then add to array }
+    
+    public func find_duplicates(a : [Nat]) : async [Nat] {
 
+        let a_ = Buffer.fromArray<Nat>(a);
+
+        //let dupes = Buffer.clone(a_);
+        //dupes.sort(Nat.compare);
+        let dupes1 = Buffer.groupBy(a_, Nat.equal);
+        dupes1.filterEntries(
+            func (_, e) {
+                let final = Buffer.Buffer<Nat>(0);
+                if (e.size() > 1)  {  final.add(e); return true} else {return false}}
+        );
+
+        let flattened = Buffer.flatten(dupes1);
+
+        let final = Buffer.Buffer<Nat>(0);
+        for (n in a.vals()) {
+            if (Buffer.contains(flattened, n, Nat.equal)
+            and not Buffer.contains(final, n, Nat.equal)
+            ) {
+                final.add(n);
+            }
+        };
+
+        Buffer.toArray(final);
+    };
+    */
  //TESTs
   public shared func test() : async() {
    
+    //1
+    let q1 = await array_avg([1, 2, 3, 4, 5]);
+    assert (q1 == 3); 
+    Debug.print("Q1 pass");
+
     //2
-    let q2 = await array_avg([1, 2, 3, 4, 5]);
-    assert (q2 == 3); 
+    let q2 = await count_character(Motoko, o);
+    assert (q2 == 3);
     Debug.print("Q2 pass");
 
     //3

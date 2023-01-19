@@ -1,6 +1,6 @@
 # <a id="questions"> 🙋 Questions </a>
 1. How much is the current memory capacity of a canister? 
-A: 48GB
+A: 48GB, according to proposal 92573
 2. What is the issue with the following code sample?
 ```
 actor {
