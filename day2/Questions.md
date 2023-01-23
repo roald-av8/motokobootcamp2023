@@ -84,6 +84,6 @@ find_duplicates(a : [Nat]) -> async [Nat]
 ```
 6. Write a function **convert_to_binary** that takes a natural number n and returns a string representing the binary representation of n.
 ```
-convert_to_binary(n : Nat) -> async Text
+convert_to_binary(n : Nat) -> async Text 
 
 ```

@@ -83,6 +83,24 @@ actor {
         Buffer.toArray(final);
     };
     */
+   /* //6
+    public func convert_to_binary(n : Nat) : async Text {
+        let binaryArray = [32];
+        let i = 0;
+        while (n > 0) {
+ 
+        storing remainder in binary array
+         binaryArray[i] = binaryArray[n % 2];
+       n = Math.floor(n / 2);
+       i++;
+    }
+ 
+    // printing binary array in reverse order
+    //for (let j = i - 1; j >= 0; j--)
+        //document.write(binaryNum[j]);
+        return array.toString(binaryNum[j]);
+    }; */
+
  //TESTs
   public shared func test() : async() {
    
